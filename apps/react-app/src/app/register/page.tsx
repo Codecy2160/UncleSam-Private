@@ -31,8 +31,8 @@ export default function RegisterPage() {
       // 1️⃣ Hash password before saving
       const hashedPassword = await bcrypt.hash(formData.password, 10);
 
-      // 2️⃣ Insert into Supabase USER table
-      const { error } = await supabase.from("USER").insert([
+      // 2️⃣ Insert into Supabase user table
+      const { error } = await supabase.from("user").insert([
         {
           username: formData.username,
           email: formData.email,
@@ -71,7 +71,7 @@ export default function RegisterPage() {
             type="text"
             name="username"
             placeholder="Username"
-            className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="p-3 border border-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             onChange={handleChange}
             required
           />
@@ -79,7 +79,7 @@ export default function RegisterPage() {
             type="email"
             name="email"
             placeholder="Email"
-            className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="p-3 border border-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             onChange={handleChange}
             required
           />
@@ -87,14 +87,14 @@ export default function RegisterPage() {
             type="text"
             name="phone"
             placeholder="Phone Number"
-            className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="p-3 border border-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             onChange={handleChange}
           />
           <input
             type="password"
             name="password"
             placeholder="Password"
-            className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="p-3 border border-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             onChange={handleChange}
             required
           />
@@ -109,10 +109,10 @@ export default function RegisterPage() {
         </form>
 
         {message && (
-          <p className="text-center mt-4 text-sm text-gray-700">{message}</p>
+          <p className="text-center mt-4 text-sm text-gray-800">{message}</p>
         )}
 
-        <p className="text-center mt-4 text-sm text-gray-500">
+        <p className="text-center mt-4 text-sm text-gray-800">
           Already have an account?{" "}
           <a
             href="/login"
