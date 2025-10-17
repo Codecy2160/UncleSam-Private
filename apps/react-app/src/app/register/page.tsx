@@ -61,7 +61,7 @@ export default function RegisterPage() {
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-blue-50 to-white px-4">
-      <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-8 border border-gray-200">
+      <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-8 border border-gray-200 text-gray-800">
         <h1 className="text-2xl font-semibold text-center text-gray-800 mb-6">
           Create an Account
         </h1>
