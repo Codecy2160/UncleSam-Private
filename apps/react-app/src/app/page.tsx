@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { ClockIcon, MapPinIcon } from '@heroicons/react/24/outline';
+import OfferModal from './components/OfferModal';
 
 const heroSlides = [
   {
@@ -30,6 +31,59 @@ const heroSlides = [
 
 export default function HomePage() {
   const [slide, setSlide] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedOffer, setSelectedOffer] = useState<any>(null);
+  
+  const handleOpenModal = (offer: any) => {
+    setSelectedOffer(offer);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedOffer(null);
+  };
+
+  const offers = [
+    {
+      title: "Fukui Tour",
+      price: "¥95,000",
+      image: "/images/fukui.jpg",
+      description:
+        "Explore the hidden beauty of Fukui, where stunning coastal scenery meets centuries-old temples and culture.",
+      destinations: [
+        "Tojinbo Cliffs",
+        "Eiheiji Temple",
+        "Dinosaur Museum",
+        "Maruoka Castle",
+      ],
+      inclusions: ["Private Guide", "Transport", "Lunch Included", "Museum Entry"],
+    },
+    {
+      title: "Tokyo Disney Transfer",
+      price: "¥60,000",
+      image: "/images/disney.jpg",
+      description:
+        "Experience the magic of Tokyo Disneyland and DisneySea with a hassle-free private transfer service.",
+      destinations: ["Tokyo Disneyland", "Tokyo DisneySea"],
+      inclusions: [
+        "Private Van Transportation",
+        "Hotel Pickup and Drop-off",
+        "Toll and Fuel Fees Included",
+        "Driver fluent in English, Japanese, and Tagalog",
+      ],
+    },
+    {
+      title: "Nagoya Tour Package",
+      price: "¥85,000",
+      image: "/images/nagoya.jpg",
+      description:
+        "Step into the heart of Nagoya with a private guided tour showcasing the city’s iconic culture and attractions.",
+      destinations: ["Nagoya Castle", "Osu Shopping District", "Atsuta Shrine"],
+      inclusions: ["Tour Guide", "Hotel Pickup", "Dinner Included"],
+    },
+  ];
+
   return (
     <main className="flex flex-col bg-white">
       {/* Hero Section */}
@@ -119,12 +173,9 @@ export default function HomePage() {
                   {tour.destinations} Destinations
                 </p>
                 <p className="mt-4 text-lg font-bold text-red-600"><span className="line-through font-regular text-gray-500">{tour.orig_price}</span> {tour.price} <span className="text-sm text-gray-500">per pax</span></p>
-                <a
-                  href="/book"
-                  className="mt-4 inline-block rounded bg-red-600 px-4 py-2 text-white hover:bg-red-700"
-                >
+                <button type="button" onClick={() => handleOpenModal(tour)} className="mt-4 inline-block rounded bg-red-600 px-4 py-2 text-white hover:bg-red-700">
                   View Details
-                </a>
+                </button>
               </div>
             </div>
           ))}
